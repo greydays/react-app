@@ -4,6 +4,7 @@ import {
   NavLink,
   Route,
 } from 'react-router-dom';
+import { uniqueId } from 'lodash';
 import Home from './components/home';
 import routes from './routes';
 import logo from './logo.svg';
@@ -40,8 +41,8 @@ export default class App extends Component {
               <NavLink to="/contact">Contact</NavLink>{' '}
             </nav>
             <Route exact path="/" component={Home} />
-            {routes.map((route, i) => (
-              <RouteWithSubRoutes key={i} {...route} />
+            {routes.map(route => (
+              <RouteWithSubRoutes key={uniqueId('route-')} {...route} />
             ))}
           </div>
         </Router>
