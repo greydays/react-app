@@ -32,12 +32,12 @@ rules:
   react/require-default-props: off
   react/no-direct-mutation-state: error
   react/no-find-dom-node: off
-  # sort-keys:
-  # - error
-  # - asc
-  # -
-  #   caseSensitive: true
-  #   natural: false
+  sort-keys:
+  - error
+  - asc
+  -
+    caseSensitive: true
+    natural: false
 env:
   es6: true
   node: true
