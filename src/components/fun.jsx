@@ -2,7 +2,7 @@ import React from 'react';
 
 const Fun = () => (
   <section>
-    <p>This is the FUN!!!!! Section.</p>
+    <h3>This is the FUN!!!!! page.</h3>
   </section>
 );
 

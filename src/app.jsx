@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Route,
   NavLink,
+  Route,
 } from 'react-router-dom';
-import Fun from './components/fun';
-import About from './components/about';
-import Contact from './components/contact';
+import Home from './components/home';
+import routes from './routes';
 import logo from './logo.svg';
 import './App.css';
 
@@ -15,6 +14,17 @@ export default class App extends Component {
     data: {},
   }
   render() {
+    const RouteWithSubRoutes = route => (
+      <Route
+        path={route.path}
+        render={props => (
+          <route.component
+            {...props}
+            routes={route.routes}
+          />
+        )}
+      />
+    );
     return (
       <div className="App">
         <div className="App-header">
@@ -24,15 +34,15 @@ export default class App extends Component {
         <Router>
           <div>
             <nav>
-              <ul>
-                <NavLink to="/fun">Fun</NavLink>{' '}
-                <NavLink to="/about">About</NavLink>{' '}
-                <NavLink to="/contact">Contact</NavLink>{' '}
-              </ul>
+              <NavLink to="/">Home</NavLink>{' '}
+              <NavLink to="/fun">Fun</NavLink>{' '}
+              <NavLink to="/about">About</NavLink>{' '}
+              <NavLink to="/contact">Contact</NavLink>{' '}
             </nav>
-            <Route path="/about" component={About} />
-            <Route path="/fun" component={Fun} />
-            <Route path="/contact" component={Contact} />
+            <Route exact path="/" component={Home} />
+            {routes.map((route, i) => (
+              <RouteWithSubRoutes key={i} {...route} />
+            ))}
           </div>
         </Router>
       </div>
