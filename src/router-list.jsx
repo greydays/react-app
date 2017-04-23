@@ -10,8 +10,11 @@ const RouterList = () => (
     <Route exact path="/" component={Home} />
     <Route exact path="/about" component={About} />
     <Route exact path="/fun" component={Fun} />
-    <Route exact path="/Contact" component={Contact} />
+    <Route
+      exact
+      path="/Contact"
+      component={props => <Contact testProp="(test prop)" {...props} />}
+    />
   </div>
 );
-
 export default RouterList;
